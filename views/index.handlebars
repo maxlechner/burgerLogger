@@ -6,7 +6,7 @@
     {{#unless devoured}}
       <p>
         {{this.id}}.{{this.burger_name}}
-        <button data-burgerid=“{{this.id}}” class=“devour”>Devour it!</button>
+        <button class="devour-burger" data-id=“{{this.id}}” id=“devour”>Devour it!</button>
         
       </p>
     {{/unless}}
@@ -20,6 +20,7 @@
     {{#if devoured}}
         <p>
           {{this.id}}.{{this.burger_name}}
+          <button class="delete-burger" data-id=“{{this.id}}” id=“delete”>Delete it!</button>
         </p>
     {{/if}}
   {{/each}}
@@ -38,6 +39,5 @@
     <input type="radio" name="devoured" value="1" checked> Eaten!<br>
     <input type="radio" name="devoured" value="0"> Not eaten
   </div>
-
   <button type="submit">Add Burger</button>
 </form>

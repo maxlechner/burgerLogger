@@ -4,7 +4,9 @@
   "description": "Function to log burger types",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +21,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
+    "heroku": "^7.47.7",
     "mysql": "^2.18.1"
   }
 }
