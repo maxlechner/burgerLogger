@@ -17,12 +17,12 @@
 
 <h2>Burgers that have been devoured!</h2>
 
-<ul>
+<ul id="del_list">
   {{#each burgers}}
     {{#if devoured}}
         <p>
           {{this.id}}.{{this.burger_name}}
-          <button class="delete-burger" data-burgerid="{{this.id}}" id="delete">Delete it!</button>
+          <button data-burgerid="{{this.id}}" id="delete">Delete it!</button>
         </p>
     {{/if}}
   {{/each}}
@@ -36,7 +36,7 @@
 </div>
 
 <script type="text/javascript">
-{{!--  --}}
+
 $("#dev_list").on("click", "button", function () {
   console.log($(this).attr("data-burgerid"))
   const id = $(this).attr("data-burgerid")
@@ -66,10 +66,10 @@ $("#add").on("click", function () {
     );
   });
 
-  $("#devour").on("click", function () {
+  {{!-- $("#del_list").on("click", function () {
   console.log($("#burg").val().trim())
    $.ajax("/api/burgers/", {
-      type: "POST",
+      type: "DELETE",
       data: {burger_name: $("#burg").val().trim()}
     }).then(
       function() {
@@ -78,5 +78,5 @@ $("#add").on("click", function () {
         location.reload();
       }
     );
-  });
+  }); --}}
 </script>
