@@ -1,13 +1,15 @@
 <h1>Eat the burger</h1>
 <img src="http://theworldsbestever.s3.amazonaws.com/blog/wp-content/uploads/2012/02/bbbbuger.gif" alt="burger GIF" width="25%">
 
-<ul>
+
+<h2>Burger choices!</h2>
+
+<ul id="dev_list">
   {{#each burgers}}
     {{#unless devoured}}
       <p>
         {{this.id}}.{{this.burger_name}}
-        <button class="devour-burger" data-id=“{{this.id}}” id=“devour”>Devour it!</button>
-        
+        <button data-burgerid="{{this.id}}" id="devour">Devour it!</button>
       </p>
     {{/unless}}
   {{/each}}
@@ -20,24 +22,61 @@
     {{#if devoured}}
         <p>
           {{this.id}}.{{this.burger_name}}
-          <button class="delete-burger" data-id=“{{this.id}}” id=“delete”>Delete it!</button>
+          <button class="delete-burger" data-burgerid="{{this.id}}" id="delete">Delete it!</button>
         </p>
     {{/if}}
   {{/each}}
 </ul>
 
-<h2>Add a Burger </h2>
-<form class="create-form">
+<div id = "add_a_burger">
+<h2 id = "add_b_h2"> Add your burger</h2>
+  <textarea id = "burg" type="text" name="burger_name"></textarea>
+  <button id = "add" type="button">Submit </button>
+<p id = "add_b_p" >Enter a burger you want to eat and click Submit</p>
+</div>
 
-  <div class="form-group">
-    <label for="ca">Burger Name:</label>
-    <input type="text" id="ca" name="burger_name">
-  </div>
+<script type="text/javascript">
+{{!--  --}}
+$("#dev_list").on("click", "button", function () {
+  console.log($(this).attr("data-burgerid"))
+  const id = $(this).attr("data-burgerid")
+   $.ajax("/api/burgers/" + id, {
+      type: "PUT",
+      data: {devoured: true}
+    }).then(
+      function() {
+        console.log("burger devoured");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
 
-  <div class="form-group">
-    <label for="devoured">Devoured?</label><br>
-    <input type="radio" name="devoured" value="1" checked> Eaten!<br>
-    <input type="radio" name="devoured" value="0"> Not eaten
-  </div>
-  <button type="submit">Add Burger</button>
-</form>
+$("#add").on("click", function () {
+  console.log($("#burg").val().trim())
+   $.ajax("/api/burgers/", {
+      type: "POST",
+      data: {burger_name: $("#burg").val().trim()}
+    }).then(
+      function() {
+        console.log("burger saved");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+  $("#devour").on("click", function () {
+  console.log($("#burg").val().trim())
+   $.ajax("/api/burgers/", {
+      type: "POST",
+      data: {burger_name: $("#burg").val().trim()}
+    }).then(
+      function() {
+        console.log("burger saved");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+</script>
