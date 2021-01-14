@@ -4,51 +4,52 @@
 </div>
 
 
+<div class="container-fluid bg-2 text-center">
+  <div class="row">
 
-<div class="row" class="container-fluid bg-2 text-center">
-
-  <div class = "col-sm-4">
-    <div id = "add_a_burger">
-      <h2 id = "add_b_h2"> Add your burger</h2>
-        <textarea id = "burg" type="text" name="burger_name"></textarea>
-        <button id = "add" type="button">Submit </button>
-      <p id = "add_b_p" >Enter a burger you want to eat and click Submit</p>
+    <div class = "col-sm-4">
+      <div id = "add_a_burger">
+        <h2 id = "add_b_h2"> Add your burger</h2>
+          <textarea id = "burg" type="text" name="burger_name"></textarea>
+          <button class="btn btn-success" id = "add" type="button">Submit </button>
+        <p id = "add_b_p" >Enter a burger you want to eat and click Submit</p>
+      </div>
     </div>
-  </div>
 
-  <div class = "col-sm-4 text-center">
-    <h2>Burger choices!</h2>
+    <div class = "col-sm-4 text-center">
+      <h2>Burger choices!</h2>
 
-      <ul id="dev_list">
-        {{#each burgers}}
-          {{#unless devoured}}
-            <p>
-              {{this.id}}.{{this.burger_name}}
-              <button class="btn btn-success" data-burgerid="{{this.id}}" id="devour"> Devour it!</button>
-            </p>
-          {{/unless}}
-        {{/each}}
-      </ul>
-  </div>
-  
-  <div class = "col-sm-4">
-    <h2>Burgers that have been devoured!</h2>
-
-      <ul id="del_list">
-        {{#each burgers}}
-          {{#if devoured}}
+        <ul id="dev_list">
+          {{#each burgers}}
+            {{#unless devoured}}
               <p>
                 {{this.id}}.{{this.burger_name}}
-                <button class="btn btn-danger"data-burgerid="{{this.id}}" id="delete"> Delete it!</button>
+                <button class="btn btn-success" data-burgerid="{{this.id}}" id="devour"> Devour it!</button>
               </p>
-          {{/if}}
-        {{/each}}
-      </ul>
+            {{/unless}}
+          {{/each}}
+        </ul>
     </div>
+    
+    <div class = "col-sm-4">
+      <h2>Burgers that have been devoured!</h2>
+
+        <ul id="del_list">
+          {{#each burgers}}
+            {{#if devoured}}
+                <p>
+                  {{this.id}}.{{this.burger_name}}
+                  <button class="btn btn-danger"data-burgerid="{{this.id}}" id="delete"> Delete it!</button>
+                </p>
+            {{/if}}
+          {{/each}}
+        </ul>
+    </div>
+  </div>
 </div>
 
-<footer class="container-fluid bg-4 text-center">
-  <p>Burger Ingestion Logger, repo hosted on: <a href="https://www.w3schools.com">www.w3schools.com</a></p>
+<footer class="container-fluid bg-3 text-center">
+  <p>Burger Ingestion Logger, repo hosted on: <a href="https://github.com/maxlechner/burgerLogger">Github</a></p>
 </footer>
 
 <script type="text/javascript">

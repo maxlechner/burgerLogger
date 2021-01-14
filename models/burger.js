@@ -17,6 +17,7 @@ var burger = {
       cb(res);
     });
   },
+  
   deleteOne: function(condition, cb) {
     orm.deleteOne("burgers", condition, function(res) {
       cb(res);
