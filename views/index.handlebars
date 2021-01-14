@@ -16,16 +16,16 @@
       </div>
     </div>
 
-    <div class = "col-sm-4 text-center">
+    <div class = "col-sm-4">
       <h2>Burger choices!</h2>
 
         <ul id="dev_list">
           {{#each burgers}}
             {{#unless devoured}}
-              <p>
+              <li>
                 {{this.id}}.{{this.burger_name}}
                 <button class="btn btn-success" data-burgerid="{{this.id}}" id="devour"> Devour it!</button>
-              </p>
+              </li>
             {{/unless}}
           {{/each}}
         </ul>
@@ -37,10 +37,10 @@
         <ul id="del_list">
           {{#each burgers}}
             {{#if devoured}}
-                <p>
+                <li>
                   {{this.id}}.{{this.burger_name}}
-                  <button class="btn btn-danger"data-burgerid="{{this.id}}" id="delete"> Delete it!</button>
-                </p>
+                  {{!-- <button class="btn btn-danger"data-burgerid="{{this.id}}" id="delete"> Delete it!</button> --}}
+                </li>
             {{/if}}
           {{/each}}
         </ul>
