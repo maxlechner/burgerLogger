@@ -1,39 +1,55 @@
-<h1>Eat the burger</h1>
-<img src="http://theworldsbestever.s3.amazonaws.com/blog/wp-content/uploads/2012/02/bbbbuger.gif" alt="burger GIF" width="25%">
-
-
-<h2>Burger choices!</h2>
-
-<ul id="dev_list">
-  {{#each burgers}}
-    {{#unless devoured}}
-      <p>
-        {{this.id}}.{{this.burger_name}}
-        <button data-burgerid="{{this.id}}" id="devour">Devour it!</button>
-      </p>
-    {{/unless}}
-  {{/each}}
-</ul>
-
-<h2>Burgers that have been devoured!</h2>
-
-<ul id="del_list">
-  {{#each burgers}}
-    {{#if devoured}}
-        <p>
-          {{this.id}}.{{this.burger_name}}
-          <button data-burgerid="{{this.id}}" id="delete">Delete it!</button>
-        </p>
-    {{/if}}
-  {{/each}}
-</ul>
-
-<div id = "add_a_burger">
-<h2 id = "add_b_h2"> Add your burger</h2>
-  <textarea id = "burg" type="text" name="burger_name"></textarea>
-  <button id = "add" type="button">Submit </button>
-<p id = "add_b_p" >Enter a burger you want to eat and click Submit</p>
+<div class="container-fluid bg-1 text-center">
+  <h1>Eat the burger</h1>
+  <img src="http://theworldsbestever.s3.amazonaws.com/blog/wp-content/uploads/2012/02/bbbbuger.gif" alt="burger GIF" class="img-circle">
 </div>
+
+
+
+<div class="row" class="container-fluid bg-2 text-center">
+
+  <div class = "col-sm-4">
+    <div id = "add_a_burger">
+      <h2 id = "add_b_h2"> Add your burger</h2>
+        <textarea id = "burg" type="text" name="burger_name"></textarea>
+        <button id = "add" type="button">Submit </button>
+      <p id = "add_b_p" >Enter a burger you want to eat and click Submit</p>
+    </div>
+  </div>
+
+  <div class = "col-sm-4 text-center">
+    <h2>Burger choices!</h2>
+
+      <ul id="dev_list">
+        {{#each burgers}}
+          {{#unless devoured}}
+            <p>
+              {{this.id}}.{{this.burger_name}}
+              <button class="btn btn-success" data-burgerid="{{this.id}}" id="devour"> Devour it!</button>
+            </p>
+          {{/unless}}
+        {{/each}}
+      </ul>
+  </div>
+  
+  <div class = "col-sm-4">
+    <h2>Burgers that have been devoured!</h2>
+
+      <ul id="del_list">
+        {{#each burgers}}
+          {{#if devoured}}
+              <p>
+                {{this.id}}.{{this.burger_name}}
+                <button class="btn btn-danger"data-burgerid="{{this.id}}" id="delete"> Delete it!</button>
+              </p>
+          {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+</div>
+
+<footer class="container-fluid bg-4 text-center">
+  <p>Burger Ingestion Logger, repo hosted on: <a href="https://www.w3schools.com">www.w3schools.com</a></p>
+</footer>
 
 <script type="text/javascript">
 
@@ -66,7 +82,7 @@ $("#add").on("click", function () {
     );
   });
 
-  {{!-- $("#del_list").on("click", function () {
+  $("#del_list").on("click", function () {
   console.log($("#burg").val().trim())
    $.ajax("/api/burgers/", {
       type: "DELETE",
@@ -78,5 +94,6 @@ $("#add").on("click", function () {
         location.reload();
       }
     );
-  }); --}}
+  });
+
 </script>

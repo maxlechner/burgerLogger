@@ -17,3 +17,16 @@ li {
 .form-group {
   margin-bottom: 5px;
 }
+
+.bg-1 {
+  background-color: #1abc9c; /* Green */
+  color: #ffffff;
+}
+  .bg-2 {
+  background-color: #6e6c6c; /* Dark Blue */
+  color: #f7e9e9;
+}
+.container-fluid {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
